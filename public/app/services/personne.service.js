@@ -1,6 +1,7 @@
 
 
 (function () {
+ 'use strict';
     angular
         .module('Notes')
         .factory('ServicePersonnes',ServicePersonnes);
@@ -16,35 +17,13 @@
             createPersonne : createPersonne,
             removePersonne : removePersonne
         };
-        
-        function getPersonne (id) {
-            return $resource("http:///localhost:8008/api/personnes/"+id).query();
+
+        function  getPersonnes() {
+            return $resource("http:///localhost:8008/api/personnes/").query();
         }
-        
-        function getPersonnes () {
 
-           var result = {}
-
-           firstQuery = $resource("http://localhost:8008/api/personnes/").query();
-
-           firstQuery.$promise.then(function (liensPersonnes) {
-
-               for  (var indiceLien in liensPersonnes){
-
-                    lienPersonne = liensPersonnes[indiceLien];
-
-                    if(typeof lienPersonne == 'string'){
-                        secondQuery = $resource(lienPersonne).get();
-                        secondQuery.$promise.then(function (personne) {
-                           result.push(personne);
-                           console.log(personne)
-                        });
-                    }
-
-               }
-                console.log(result)
-            });
-
+        function getPersonne(lienPersonne) {
+            return $resource(lienPersonne).get();
         }
 
         function updatePersonne(personne) {

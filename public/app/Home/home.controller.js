@@ -10,17 +10,23 @@
 
     function HomeController($scope, $location ,$http, $rootScope, ngDialog,ServicePersonnes) {
 
-        $scope.personnes = {};
+        $scope.personnes =  [];
         
-        ServicePersonnes.getPersonnes();
-//            $scope.personnes = result;
-//               for  (var pers in result){
-//                    console.log(result[pers])
-//               }
-//                console.log(result)
-//        });
-		
-		$scope.lol = " hey, ceci est un test";
+        ServicePersonnes.getPersonnes().$promise.then(function (liensPersonnes) {
+            for  (var indiceLien in liensPersonnes){
+
+                var lienPersonne = liensPersonnes[indiceLien];
+
+                 if(typeof lienPersonne == 'string'){
+
+                    ServicePersonnes.getPersonne(lienPersonne).$promise.then(function (personne) {
+                        $scope.personnes.push(personne);
+                    });
+                 }
+
+            }
+        });
+
     }
 
 })();
