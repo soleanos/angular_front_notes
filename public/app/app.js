@@ -21,7 +21,7 @@
 
     function config($routeProvider,$compileProvider) {
         $routeProvider.otherwise({
-//            redirectTo: '/home'
+            redirectTo: '/home'
         });
     }
 })();

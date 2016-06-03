@@ -17,9 +17,8 @@
 
                 var lienPersonne = liensPersonnes[indiceLien];
 
-                 // Je vérifie que la ligne de resultat est bien un lien en string et non pas un true ou un $promise{..}
+                 // Je verifie que la ligne de resultat est bien un lien en string et non pas un true ou un $promise{..}
                  if(typeof lienPersonne == 'string'){
-
                     ServicePersonnes.getPersonne(lienPersonne).$promise.then(function (personne) {
                         $scope.personnes.push(personne);
                     });
@@ -27,10 +26,11 @@
             }
         });
 
-        $scope.mdr = " mdrrrrrrrr";
-
+        $scope.openUpdateModale = function (index) {
+           $rootScope.dialog = ngDialog.open({ template: 'templateUpdate' });
+           $rootScope.indexGlobal = index;
+        };
     }
-
 })();
 
 
