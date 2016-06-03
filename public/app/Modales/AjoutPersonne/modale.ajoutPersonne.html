@@ -1,5 +1,5 @@
 <script type="text/ng-template" id="templateAdd">
-    <div id="target"  ng-init="initModalUpdate()" ng-controller="modaleAjoutPersonneController" >
+    <div id="target"  ng-init="initModalAdd()" ng-controller="modaleAjoutPersonneController" >
 
         <div layout="row" layout-align="center center">
             <div layout="column">
@@ -11,11 +11,11 @@
                 </md-input-container>
 
                 <md-input-container >
-                    <label>Mot de passe</label>
+                    <label>Prénom</label>
                     <input type="text" ng-model="newPersonne.prenom">
                 </md-input-container>
 
-                <md-button class="md-raised md-primary" ng-click="connect()">Ajouter</md-button>
+                <md-button class="md-raised md-primary" ng-click="add(newPersonne)">Ajouter</md-button>
             </div>
         </div>
 

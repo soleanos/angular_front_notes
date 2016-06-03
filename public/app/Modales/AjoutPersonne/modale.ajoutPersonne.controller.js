@@ -1,28 +1,32 @@
+
 (function () {
     'use strict';
 
     angular
-        .module('Trombi')
+        .module('Notes')
         .controller('modaleAjoutPersonneController', modaleAjoutPersonneController);
 
-     modaleAjoutPersonneController.$inject = ['$scope', '$route', '$rootScope'];
+    modaleAjoutPersonneController.$inject = ['$scope', '$location', '$http', '$rootScope', 'ngDialog','ServicePersonnes','$route'];
+
+    function modaleAjoutPersonneController($scope, $location ,$http, $rootScope, ngDialog,ServicePersonnes,$route) {
 
 
-     function modaleAjoutPersonneController($scope, $route, $rootScope) {
-//
-//        $scope.initModalUpdate = function(){
-//                TrombiUsers.getUsers().$promise.then(function(result) {
-//                     $scope.usersAdmin = result;
-//                     $scope.unUser = $scope.usersAdmin[$rootScope.indexGlobal]
-//                     $scope.unUser.fullLinkPicture = 'http://127.0.0.1:3000/api/users/'+$scope.unUser.matricule+'/picture';
-//                });
-//        };
-//
-//         $scope.RemoveUser = function(unUser) {
-//             TrombiUsers.removeUser(unUser);
-//             $rootScope.dialog.close();
-//         };
+            $scope.initModalAdd = function(){
+                $scope.newPersonne = {}
+            };
 
+            $scope.add = function(newPersonne){
+                if(newPersonne){
+                    ServicePersonnes.createPersonne(newPersonne)
+                    console.log(newPersonne);
+//                    $route.reload();
+
+                }
+            };
+
+            $scope.test = function(newPersonne){
+                alert("mdr");
+            };
 
     }
 })();

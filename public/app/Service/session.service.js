@@ -10,7 +10,7 @@
 
         return {
             getSession : getSession,
-            getSession : getSessions,
+            getSessions : getSessions,
             updateSession : updateSession,
             createSession : createSession,
             removeSession : removeSession

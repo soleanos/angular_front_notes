@@ -5,9 +5,9 @@
         .module('Notes')
         .factory('ServicePersonnes',ServicePersonnes);
     
-   ServicePersonnes.$inject = ['$resource','$rootScope'];
+   ServicePersonnes.$inject = ['$resource','$rootScope','$http'];
 
-    function ServicePersonnes($resource, $rootScope) {
+    function ServicePersonnes($resource, $rootScope,$http) {
 
         return {
             getPersonne : getPersonne,
@@ -17,7 +17,7 @@
             removePersonne : removePersonne
         };
 
-        function  getPersonnes() {
+        function getPersonnes() {
             return $resource("http:///localhost:8008/api/personnes/").query();
         }
 
@@ -26,11 +26,11 @@
         }
 
         function updatePersonne(personne) {
-            $resource('http:///localhost:8008/api/personnes/').save(personne);
+                $resource('http:///localhost:8008/api/personnes/').save(personne);
         }
 
         function createPersonne(personne) {
-            $resource('http:///localhost:8008/api/personnes/').save(user);
+           $resource('http:///localhost:8008/api/personnes/').save(personne);
         }
 
         function removePersonne(personne) {

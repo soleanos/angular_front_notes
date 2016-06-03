@@ -6,11 +6,12 @@
 
     <div id="personnes">
 
-
-        <md-button class="md-raised md-primary" ng-click="connect()">Ajouter personne</md-button>
-
         <h1> Liste de l'ensemble des personnes </h1>
+
+        <button  ng-click="openAddModale()">Ajouter une personne</button>
+
         <div class="table-responsive-vertical shadow-z-1">
+
             <table id="table" class="table table-hover table-mc-light-blue">
                 <thead>
                     <tr>
@@ -26,11 +27,20 @@
                             <td >{{personne.id}}</td>
                             <td >{{personne.nom}}</td>
                             <td>{{personne.prenom}}</td>
-                            <td >{{personne.sessions_suivies}}</td>
-                            <td ><button  ng-click="openUpdateModale($index)">Modifier</button> [Supprimer}</td>
-                        </tr>
+                            <td>
+                                <div ng-repeat="sessionSuivie in personnes.sessions_suivies  ">
+                                    <td >{{sessionSuivie.intitule}}</td>
+                                </div>
+                            </td>
+                            <td >
+                                <button  ng-click="openUpdateModale($index)">Modifier</button>
+                                <button  ng-click="DeletePersonne($index)">Supprimer</button>
+                            </td>
+
                 </tbody>
             </table>
         </div>
+
+    </div>
 
 </div>
